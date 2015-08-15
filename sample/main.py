@@ -13,7 +13,9 @@ def main_loop():
     player = pygame.sprite.GroupSingle()
     player_shots = pygame.sprite.Group()
     baddies = pygame.sprite.Group()
+
     sprite.Player(display_area, pygame.K_w, player)
+    sprite.Enemy((20, 20), player.sprite, display_area, baddies)
     display.blit(sprite.player_image, (0, 0))
 
     def stop():
@@ -31,11 +33,13 @@ def main_loop():
                 player.sprite.fire(player_shots, baddies)
         player.update(time)
         player_shots.update(time)
+        baddies.update(time)
 
         # Draw
         display.fill((0, 0, 0))
         player.draw(display)
         player_shots.draw(display)
+        baddies.draw(display)
 
         pygame.display.update()
 
