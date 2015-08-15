@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Pygame</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="deck.js/core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="deck.js/extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="deck.js/extensions/scale/deck.scale.css">
+  <link rel="stylesheet" media="screen" href="deck.js/extensions/status/deck.status.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck.js/themes/style/swiss.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="deck.js/themes/transition/vertical-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="deck.js/core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="deck.js/modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h1>PyGame</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Who's This Chick?</h2>
+      <img src="images/doh-logo-website.png" />
+      <h3>Piper Thunstrom<br />
+        <sub>Server Developer</sub></h3>
+      <p>Twitter: <a href="https://twitter.com/pathunstrom"><strong>@pathunstrom</strong></a></p>
+    </section>
+
+    <section class="slide">
+      <h2>What's This Talk?</h2>
+      <h3>PyGame!</h3>
+      <h4 class="slide">Interesting problems</h4>
+      <h4 class="slide">Games are fun!</h4>
+    </section>
+
+    <section class="slide">
+      <h2>What's in this talk?</h2>
+      <ul>
+        <li>The best parts of Pygame</li>
+        <li>Putting them together</li>
+        <li>Design patterns</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>What's <em>not</em> in this talk?</h2>
+      <ul>
+        <li>Artificial intelligence</li>
+        <li>Installation issues</li>
+        <li>I'm not even sure what those do?</li>
+        <li class="slide">Where'd that one go?</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h1>The Building Blocks</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Surface</h2>
+      <p class="slide">A digital canvas that can be drawn on and blitted to other surfaces.</p>
+    </section>
+
+    <section class="slide">
+      <h2>How do you get a Surface?</h2>
+      <pre>pygame.Surface((300, 300))</pre>
+      <pre>pygame.image.load(path)</pre>
+      <pre>pygame.display.set_mode((300, 300))</pre>
+      <p>pygame.display represents the screen.</p>
+    </section>
+
+    <section class="slide">
+      <h1>What can you do with a Surface?</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Match the pixel format of another Surface</h2>
+      <pre>Surface.convert(Surface2) -> Surface</pre>
+      <p>Convert Surfaces you plan to blit regularly.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Draw one Surface to another Surface</h2>
+      <pre>Surface.blit(Surface, (x, y))</pre>
+      <p>Origin is top left.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Set transparencies</h2>
+      <pre>Surface.set_colorkey(Color)</pre>
+      <p>Colors are either a Pygame Color object or a 3 tuple of RGB values.</p>
+      <pre>Surface.set_alpha(value)</pre>
+    </section>
+
+    <section class="slide">
+      <h2>Fill!</h2>
+      <pre>Surface.fill(Color)</pre>
+    </section>
+
+    <section class="slide">
+      <h2>Draw lines</h2>
+      <pre>pygame.draw.line(Surface, Color, start, end, width=5</pre>
+      <p>Similar to aaline. Width replaced with a blend.</p>
+      <pre>pygame.draw.lines(Surface, color, closed, pointlist, width)</pre>
+      <p>Similar to aalines and polygon</p>
+    </section>
+
+    <section class="slide">
+      <h2>Draw Circles</h2>
+      <pre>pygame.draw.circle(Surface, color, pos, radius, width=0)</pre>
+      <p>Points are almost always (x, y) tuples.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Draw Rectangles</h2>
+      <pre>pygame.draw.rect(Surface, color, Rect, width=0)</pre>
+      <p>The Surface, color, Rect signature is shared with draw.ellipse, and is part of the draw.arc signature.</p>
+    </section>
+
+    <section class="slide">
+      <h1>What's a Rect?</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Make a Rect</h2>
+      <pre>pygame.Rect(x, y, width, height)</pre>
+      <pre>pygame.Rect((x, y), (width, height))</pre>
+      <p>Rects are just rectangles.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Why are they so awesome?</h2>
+      <img src="" alt="top, left, right, bottom" />
+      <h3>Magic attributes</h3>
+      <pre class="slide">Rect.center = x, y</pre>
+    </section>
+
+    <section class="slide">
+      <h2>Collisions</h2>
+      <pre>Rect.collidepoint(x, y)</pre>
+      <pre>Rect.colliderect(Rect)</pre>
+      <pre>Rect.collidelist(list)</pre>
+      <pre>Rect.collidedict(dict)</pre>
+      <p>There's also collidedictall and collidelistall</p>
+    </section>
+
+    <section class="slide">
+      <h1>Sprites</h1>
+    </section>
+
+    <section class="slide">
+      <h2>What makes a sprite?</h2>
+      <ul>
+        <li>Sprite.image</li>
+        <li>Sprite.rect</li>
+        <li>Sprite.update(*args, **kwargs)</li>
+      </ul>
+      <p>Everything else is optional</p>
+    </section>
+
+    <section class="slide">
+      <h2>Sprite groups</h2>
+      <ul>
+        <li><pre>Group.add(Sprite)</pre></li>
+        <li><pre>Group.remove(Sprite)</pre></li>
+        <li><pre>Group.update(*args, **kwargs)</pre></li>
+        <li><pre>Group.draw(Surface)</pre></li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h1>Events</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Event Types</h2>
+      <ul>
+        <li>QUIT</li>
+        <li>KEYDOWN and KEYUP for keyboard, mouse, and joystick</li>
+        <li>MOUSEMOTION</li>
+        <li>JOY AXIS, BALL and HAT motion.</li>
+        <li>VIDEORESIZE</li>
+        <li>USEREVENT</li>
+      </ul>
+    </section>
+
+    <section class="slide">
+      <h2>Handling Events</h2>
+      <pre>
+for event in pygame.events.get():
+    if event.type == pygame.QUIT:
+        pygame.event.post(pygame.event.Event(pygame.QUIT)</pre>
+      <p>Can pass events in a publisher-subscriber model</p>
+    </section>
+
+    <section class="slide">
+      <h2>Keyboard</h2>
+      <pre>pygame.key.get_pressed()</pre>
+      <p>Dict of key ids with a boolean values.</p>
+      <p>pygame.locals includes K_{key} constants.</p>
+    </section>
+
+    <section class="slide">
+      <h2>Mouse</h2>
+    </section>
+
+    <section class="slide">
+      <h1>Putting It Together</h1>
+    </section>
+<!-- End slides. -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+      <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+  </div>
+
+
+<!-- Required JS files. -->
+<script src="deck.js/jquery.min.js"></script>
+<script src="deck.js/core/deck.core.js"></script>
+<script src="deck.js/extensions/navigation/deck.navigation.js"></script>
+<script src="deck.js/extensions/status/deck.status.js"></script>
+
+
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck.js/extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
